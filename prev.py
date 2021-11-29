@@ -12,7 +12,7 @@ st.set_page_config(page_title="App-Streamlit",page_icon="random",layout="wide",
                                    'About': "# This is a Bankruptcy Prevention App. Very Easy to use!"})
 @st.cache(allow_output_mutation=True)
 def loading_model():
-    model = load_model(r'C:\Users\new\Documents\PythonFiles\bankr.h5')
+    model = load_model('bankr.h5')
     return model
 with st.spinner('Model is being loaded..'):
     model=loading_model()
