@@ -43,7 +43,7 @@ def main():
     </div>
     """
     st.markdown(html_temp,unsafe_allow_html=True)
-    image = Image.open('A:\prev.png')
+    image = Image.open('prev.png')
     st.image(image, caption='')
     check=st.checkbox("Input Values for Features",value=False)
     if check:
