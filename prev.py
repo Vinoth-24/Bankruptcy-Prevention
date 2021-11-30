@@ -17,13 +17,13 @@ st.set_page_config(page_title="App-Streamlit",page_icon="random",layout="wide",
 @st.cache(allow_output_mutation=True) #For Autoupdate in app.
 
 def loading_model():
-    model = load_model(r'C:\Users\new\Documents\PythonFiles\EXCELR Project\bankr.h5')
+    model = load_model('bankr.h5')
     return model
 with st.spinner('Model is being loaded..'):
     model=loading_model()     #Model is loaded.
 
 # Reading File:
-bank_data=pd.read_csv("A:\\Data Science by Excelr\\PROJECT\\bankruptcy_prevention.csv",sep=";")
+bank_data=pd.read_csv("bankruptcy_prevention.csv",sep=";")
 label_encoder = preprocessing.LabelEncoder()
 bank_data[" class"] = label_encoder.fit_transform(bank_data[" class"])
 features=bank_data.columns[0:6]
@@ -85,7 +85,7 @@ def decor():
     </div>
     """
     st.markdown(html_temp,unsafe_allow_html=True)
-    image = Image.open('A:\prev.png')
+    image = Image.open('prev.png')
     st.image(image, caption='')    
 #--------------------------------------------------------------------------------------------------------------------------------
 
