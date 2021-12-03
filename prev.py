@@ -152,7 +152,7 @@ def main():
     with col5:
         #if st.button("My info"):
             #myinfo()
-        expander=st.expander("My info",expanded=True)
+        expander=st.expander("My info",expanded=False)
         with expander:
             st.info("My name is Kasi Vinoth S and I am a Data Science enthusiast. \n Check out my blog on this Model Deployment - [article link](https://medium.com/@vino24995/deployment-of-your-model-on-heroku-web-using-streamlit-library-e76f9c73ed86)")
 #-------------------------------------------------------------------------------------------------------------------------------
