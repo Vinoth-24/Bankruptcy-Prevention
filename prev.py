@@ -82,44 +82,50 @@ def decor():
     st.markdown(html_temp,unsafe_allow_html=True)
     image = Image.open('prev.png')
     st.image(image, caption='')    
+
 #--------------------------------------------------------------------------------------------------------------------------------
 
 def main():
     
     decor()
-    
+    name=st.sidebar.text_input("Enter your name :")
+    if name:
+        st.write("# %s's Company"%name)
+    col3,col4,col5=st.columns(3)
 # taking Inputs:
-    check=st.checkbox("Input Values for Features",value=False)
-    if check:
-        industrial_risk = st.sidebar.number_input("Industrial Risk",min_value=0.0, max_value=1.0, value=0.0, step=0.5,help="low = 0.0, medium = 0.50, high = 1.0")
-        management_risk = st.sidebar.number_input("Management Risk",min_value=0.0, max_value=1.0, value=0.0, step=0.5,help="low = 0.0, medium = 0.50, high = 1.0")
-        financial_flexibility = st.sidebar.number_input("Financial Flexibility",min_value=0.0, max_value=1.0, value=0.0, step=0.5,help="low = 0.0, medium = 0.50, high = 1.0")
-        credibility = st.sidebar.number_input("Credibility",min_value=0.0, max_value=1.0, value=0.0, step=0.5,help="low = 0.0, medium = 0.50, high = 1.0")
-        competitiveness=st.sidebar.number_input("Competitiveness",min_value=0.0, max_value=1.0, value=0.0, step=0.5,help="low = 0.0, medium = 0.50, high = 1.0")
-        operating_risk=st.sidebar.number_input("Operating Risk",min_value=0.0, max_value=1.0, value=0.0, step=0.5,help="low = 0.0, medium = 0.50, high = 1.0")
+    with col3:
+        check=st.checkbox("Input Values for Features",value=False)
+        if check:
+            industrial_risk = st.sidebar.number_input("Industrial Risk",min_value=0.0, max_value=1.0, value=0.0, step=0.5,help="low = 0.0, medium = 0.50, high = 1.0")
+            management_risk = st.sidebar.number_input("Management Risk",min_value=0.0, max_value=1.0, value=0.0, step=0.5,help="low = 0.0, medium = 0.50, high = 1.0")
+            financial_flexibility = st.sidebar.number_input("Financial Flexibility",min_value=0.0, max_value=1.0, value=0.0, step=0.5,help="low = 0.0, medium = 0.50, high = 1.0")
+            credibility = st.sidebar.number_input("Credibility",min_value=0.0, max_value=1.0, value=0.0, step=0.5,help="low = 0.0, medium = 0.50, high = 1.0")
+            competitiveness=st.sidebar.number_input("Competitiveness",min_value=0.0, max_value=1.0, value=0.0, step=0.5,help="low = 0.0, medium = 0.50, high = 1.0")
+            operating_risk=st.sidebar.number_input("Operating Risk",min_value=0.0, max_value=1.0, value=0.0, step=0.5,help="low = 0.0, medium = 0.50, high = 1.0")
         
     #---------------------------------------------------------------------------------------------------------------------------
 
 # Result:       
-        result=""
-        if st.button("Predict"):
-            with st.spinner('Wait for it...'):
-                time.sleep(3)
-            result=predict_bankruptcy(industrial_risk,management_risk,financial_flexibility,credibility,competitiveness,operating_risk)
+            result=""
+            if st.button("Predict"):
+                with st.spinner('Wait for it...'):
+                    time.sleep(3)
+                result=predict_bankruptcy(industrial_risk,management_risk,financial_flexibility,credibility,competitiveness,operating_risk)
             
-        if result==0:
-            result='BANKRUPTED!!'
-        elif result==1:
-            st.balloons()
-            result= 'NOT BANKRUPTED!!'
+            if result==0:
+                result='BANKRUPTED!!'
+            elif result==1:
+                st.balloons()
+                result= 'NOT BANKRUPTED!!'
+            else:
+                result='yet to submit...'
+            st.success("### You are {}".format(result))
         else:
-            result='yet to submit...'
-        st.success("# You are {}".format(result))
-    else:
-        st.write("Whenever you're ready..!")
+            st.write("Whenever you're ready..!")
+    st.markdown("---")
     #---------------------------------------------------------------------------------------------------------------------------
     
-# Graph:    
+# Graph: 
     if st.checkbox("Show Graphs",value=False):
         choice = st.selectbox("Choose Feature Values :",
                      ('None','industrial_risk', ' management_risk', ' financial_flexibility',
@@ -134,11 +140,17 @@ def main():
                 st.pyplot(plot2)
         else:
             st.write("No Feature chosen!")
+        st.markdown("---")
 #---------------------------------------------------------------------------------------------------------------------------
-    
+    with col4:
+        st.write("")
 # My info:
-    if st.button("My info"):
-        myinfo()
+    with col5:
+        #if st.button("My info"):
+            #myinfo()
+        expander=st.expander("My info",expanded=True)
+        with expander:
+            st.info("My name is Kasi Vinoth S and I am a Data Science enthusiast. \n Check out my blog on this Model Deployment - [article link](https://medium.com/@vino24995/deployment-of-your-model-on-heroku-web-using-streamlit-library-e76f9c73ed86)")
 #-------------------------------------------------------------------------------------------------------------------------------
 
 # Program Starts:
