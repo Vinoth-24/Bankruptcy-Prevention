@@ -67,14 +67,9 @@ def graph1(choice):
             
 #-------------------------------------------------------------------------------------------------------------------------------    
 
-# Teams Func:
-def team():
-    st.text("Anand")
-    st.text("Hari")
-    st.text("Kasi")
-    st.text("Nileena")
-    st.text("Neha")
-    st.text("Vishal")    
+# Blog func:
+def myinfo():
+    st.write("My name is Kasi Vinoth S and I am a Data Science enthusiast. \n Check out my blog on this Model Deployment - [article link](https://medium.com/@vino24995/deployment-of-your-model-on-heroku-web-using-streamlit-library-e76f9c73ed86)")
 #-------------------------------------------------------------------------------------------------------------------------------
 
 # Decor Func:    
@@ -141,9 +136,9 @@ def main():
             st.write("No Feature chosen!")
 #---------------------------------------------------------------------------------------------------------------------------
     
-# Team Details:
-    if st.button("Team Details"):
-        team()
+# My info:
+    if st.button("My info"):
+        myinfo()
 #-------------------------------------------------------------------------------------------------------------------------------
 
 # Program Starts:
