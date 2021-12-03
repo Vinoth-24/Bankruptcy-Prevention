@@ -33,9 +33,9 @@ st.write("""
          """)
 
 # Model Prediction func:
-def predict_bankruptcy(industrial_risk,management_risk,financial_flexibility,credibility,competitiveness,operating_risk):
+def predict_bankruptcy(i,m,f,cr,co,o):
     
-    pred=model.predict([[industrial_risk,management_risk,financial_flexibility,credibility,competitiveness,operating_risk]])
+    pred=model.predict([[i,m,f,cr,co,o]])
     prediction = (pred >=0.9995045) 
     prediction=1*prediction
     print(prediction)
@@ -80,13 +80,14 @@ def input_data():
     credibility = st.sidebar.number_input("Credibility",min_value=0.0, max_value=1.0, value=0.0, step=0.5,help="low = 0.0, medium = 0.50, high = 1.0")
     competitiveness=st.sidebar.number_input("Competitiveness",min_value=0.0, max_value=1.0, value=0.0, step=0.5,help="low = 0.0, medium = 0.50, high = 1.0")
     operating_risk=st.sidebar.number_input("Operating Risk",min_value=0.0, max_value=1.0, value=0.0, step=0.5,help="low = 0.0, medium = 0.50, high = 1.0")
-    
+    return(industrial_risk,management_risk,financial_flexibility,credibility,competitiveness,operating_risk)
+
 #-------------------------------------------------------------------------------------------------------------------------------
 
 # Decor Func:    
 def decor():
     html_temp = """
-    <div style="background-color:tomato;padding:10px">
+    <div style="background-color:Chocolate;padding:10px">
     <h2 style="color:white;text-align:center;">Streamlit Bankruptcy Prevention App </h2>
     </div>
     """
@@ -107,7 +108,7 @@ def main():
     with col3:
         check=st.checkbox("Input Values for Features",value=False)
         if check:
-            input_data()
+            i,m,f,cr,co,o=input_data()
         
     #---------------------------------------------------------------------------------------------------------------------------
 
@@ -116,7 +117,7 @@ def main():
             if st.button("Predict"):
                 with st.spinner('Wait for it...'):
                     time.sleep(3)
-                result=predict_bankruptcy(industrial_risk,management_risk,financial_flexibility,credibility,competitiveness,operating_risk)
+                result=predict_bankruptcy(i,m,f,cr,co,o)
             
             if result==0:
                 result='BANKRUPTED!!'
