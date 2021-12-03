@@ -71,6 +71,7 @@ def graph1(choice):
 def myinfo():
     st.write("My name is Kasi Vinoth S and I am a Data Science enthusiast. \n Check out my blog on this Model Deployment - [article link](https://medium.com/@vino24995/deployment-of-your-model-on-heroku-web-using-streamlit-library-e76f9c73ed86)")
 #-------------------------------------------------------------------------------------------------------------------------------
+
 #Input func:
 def input_data():
     industrial_risk = st.sidebar.number_input("Industrial Risk",min_value=0.0, max_value=1.0, value=0.0, step=0.5,help="low = 0.0, medium = 0.50, high = 1.0")
@@ -80,6 +81,7 @@ def input_data():
     competitiveness=st.sidebar.number_input("Competitiveness",min_value=0.0, max_value=1.0, value=0.0, step=0.5,help="low = 0.0, medium = 0.50, high = 1.0")
     operating_risk=st.sidebar.number_input("Operating Risk",min_value=0.0, max_value=1.0, value=0.0, step=0.5,help="low = 0.0, medium = 0.50, high = 1.0")
     
+#-------------------------------------------------------------------------------------------------------------------------------
 
 # Decor Func:    
 def decor():
