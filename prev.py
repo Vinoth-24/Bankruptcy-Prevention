@@ -105,7 +105,7 @@ def main():
     with col3:
         check=st.checkbox("Input Values for Features",value=False)
         if check:
-            def input_data()
+            input_data()
         
     #---------------------------------------------------------------------------------------------------------------------------
 
